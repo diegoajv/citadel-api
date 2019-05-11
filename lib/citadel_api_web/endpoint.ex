@@ -40,5 +40,6 @@ defmodule CitadelApiWeb.Endpoint do
     key: "_citadel_api_key",
     signing_salt: "qxzqinVt"
 
+  plug CORSPlug, origins: "*"
   plug CitadelApiWeb.Router
 end
