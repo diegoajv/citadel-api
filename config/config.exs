@@ -14,8 +14,15 @@ config :citadel_api,
 config :citadel_api, CitadelApiWeb.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "hU1V59xe+4FCbEjnN7ONc7RszONQBxm18Gi0mnIXk8NBDqpOUhIAluafUAtREMIG",
-  render_errors: [view: CitadelApiWeb.ErrorView, accepts: ~w(json)],
+  render_errors: [view: CitadelApiWeb.ErrorView, accepts: ~w(json, json-api)],
   pubsub: [name: CitadelApi.PubSub, adapter: Phoenix.PubSub.PG2]
+
+# Configure JSON
+config :mime, :types, %{
+  "application/vnd.api+json" => ["json-api"]
+}
+
+config :phoenix, :format_encoders, "json-api": Poison
 
 # Configures Elixir's Logger
 config :logger, :console,
