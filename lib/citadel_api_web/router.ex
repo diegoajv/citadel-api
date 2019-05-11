@@ -5,7 +5,9 @@ defmodule CitadelApiWeb.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/api", CitadelApiWeb do
+  scope "/", CitadelApiWeb do
     pipe_through :api
+  
+    get "/", StatusController, :index 
   end
 end
