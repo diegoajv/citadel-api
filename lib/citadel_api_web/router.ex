@@ -2,7 +2,9 @@ defmodule CitadelApiWeb.Router do
   use CitadelApiWeb, :router
 
   pipeline :api do
-    plug :accepts, ["json"]
+    plug :accepts, ["json", "json-api"]
+    plug JaSerializer.ContentTypeNegotiation
+    plug JaSerializer.Deserializer
   end
 
   scope "/", CitadelApiWeb do
